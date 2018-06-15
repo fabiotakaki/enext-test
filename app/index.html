@@ -136,6 +136,9 @@
 </div>
 
 <script type="text/javascript">
+  /**
+  *** HELPERS
+  ***/
   var toggleVisibility = function (elem) {
     if (window.getComputedStyle(elem).display === 'block') {
       elem.style.display = 'none';
@@ -144,6 +147,9 @@
     elem.style.display = 'block';
   };
 
+  /**
+  *** NAVIGATION MOBILE
+  ***/
   function toggleNav() {
     let nav_icon = document.getElementById("nav_icon");
     let logo = document.getElementById("logo");
@@ -166,6 +172,9 @@
     }
   }
   
+  /**
+  *** LOAD POTIONS
+  ***/
   function loadJSON(file, callback) {   
     let request = new XMLHttpRequest();
     request.overrideMimeType('application/json');
@@ -231,6 +240,9 @@
     }
   });
 
+  /**
+  *** MODAL
+  ***/
   let modal = document.getElementById('potionModal');
   let close_button = document.getElementById('close');
 
