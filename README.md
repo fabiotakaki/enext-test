@@ -1,5 +1,5 @@
-# COMO RODAR
-Para abrir o layout você deverá ter o npm instalado. Rode npm install e o gulp para executar as tarefas como abaixo :)
+# Como executar
+Para abrir o layout você deverá ter o npm instalado. Excute os comandos npm install e o gulp para executar as tarefas. Segue o procedimento abaixo :)
 
 - npm install
 - gulp
