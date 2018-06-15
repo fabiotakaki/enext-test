@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Merlin's Potions - fine potions sincce 1026</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="container">
+  <div class="nav-toggle" onclick="toggleNav()">
+    <i class="fas fa-bars" id="nav_icon"></i>
+  </div>
+  <div class="logo" id="logo">
+    <h1><b>MERLIN'S</b> POTIONS</h1>
+    <p><span>fine potions since 1026</span></p>
+  </div>
+  <div class="search-form" id="search_form">
+    <i class="fas fa-search"></i>
+    <input type="text" name="stock" placeholder="Search out stock" class="search" />
+  </div>
+  <div class="promotion">
+    <div class="info">
+      <h1>Free shipping</h1>
+      <p>on orders over $50</p>
+    </div>
+    <div class="bag" id="bag">
+      <i class="fas fa-shopping-bag"></i> BAG: <span class="number">1</span>
+    </div>
+  </div>
+</header>
+ 
+<div class="container-fluid">
+  <div class="info-mobile">
+    Free shipping on orders over $50
+  </div>
+</div>
+
+<nav class="main-bar" id="main_bar">
+  <div class="container">    
+    <ul>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Potions</a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Ingredients</a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Books</a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Supplies</a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Charms</a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="featured"><a href="#">Clearance</a></li>
+    </ul>
+
+    <span><a href="#">Sign in</a> or <a href="#">Sign up</a></span>
+  </div>
+</nav>
+
+<section class="potions container">
+  <h1>Potions</h1>
+  <div class="list-potions" id="json_potions"></div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="#">COMPANY</a></li>
+          <li><a href="#">CONTACT US</a></li>
+          <li><a href="#">SHIPPING</a></li>
+          <li><a href="#">RETURNS</a></li>
+          <li><a href="#">CAREERS</a></li>
+        </ul>  
+      </nav>
+      
+      <div class="social-media">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-pinterest"></i>
+        <i class="fab fa-tumblr"></i>
+        <i class="fab fa-google-plus"></i>
+      </div>
+    </div>
+
+    <div class="newsletter">
+      <h1>Sign up for our Newsletter</h1>
+      <p>Sign up for our newsletter & get exclusive discounts!</p>
+      <div class="form">
+        <input type="text" name="email" placeholder="Enter your email" /> <button type="button">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+  <p class="copy">&copy; 2015 Merlin's Potions. All Rights Reserved.</p>
+</footer>
+
+<div id="potionModal">
+  <div class="content">
+    <i class="fas fa-times" id="close"></i>
+    <div class="potion-detailed" id="potion_detailed">
+      Loading...
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var toggleVisibility = function (elem) {
+    if (window.getComputedStyle(elem).display === 'block') {
+      elem.style.display = 'none';
+      return;
+    }
+    elem.style.display = 'block';
+  };
+
+  function toggleNav() {
+    let nav_icon = document.getElementById("nav_icon");
+    let logo = document.getElementById("logo");
+    let bag = document.getElementById("bag");
+    let search_form = document.getElementById("search_form");
+    let main_bar = document.getElementById("main_bar");
+
+    if (nav_icon.className === "fas fa-bars") {
+      nav_icon.className = "fas fa-times";
+      toggleVisibility(logo);
+      toggleVisibility(bag);
+      toggleVisibility(search_form);
+      toggleVisibility(main_bar);
+    } else {
+      nav_icon.className = "fas fa-bars";
+      toggleVisibility(logo);
+      toggleVisibility(bag);
+      toggleVisibility(search_form);
+      toggleVisibility(main_bar);
+    }
+  }
+  
+  function loadJSON(file, callback) {   
+    let request = new XMLHttpRequest();
+    request.overrideMimeType('application/json');
+    request.open('GET', file, true);
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        callback(request.responseText);
+      } else {
+        callback('Response error status:'+request.status);
+      }
+    };
+
+    request.onerror = function() {
+      callback('Failed');
+    };
+
+    request.send();
+  }
+
+  var potions;
+  loadJSON('potions.json', function(resp){
+    let data = JSON.parse(resp);
+    potions = data.potions;
+    let html = '';
+    for (i in potions) {
+      html += `<div class="potion" idPotion="`+potions[i].id+`">
+                <img src="assets/img/products/`+potions[i].image+`" />
+                <h1>`+potions[i].name+` - <span class="price">$`+potions[i].price+`</span></h1>
+              </div>`;
+    }
+
+    document.getElementById("json_potions").innerHTML = html;
+
+    let html_potions = document.querySelectorAll('.potion');
+    let modal = document.getElementById('potionModal');
+    let potion_detailed = document.getElementById('potion_detailed');
+    for (var i = 0; i < html_potions.length; i++) {
+      let id = html_potions[i].getAttribute('idPotion');
+      html_potions[i].addEventListener('click', function(event) {
+        let ingredients = '';
+        for (var j = 0; j < potions[id].ingredients.length; j++) {
+          ingredients += '<li>'+potions[id].ingredients[j]+'</li>';
+        }
+
+        let html = `<img src="assets/img/products/`+potions[id].image+`" />
+                    <div class="potion-detail">
+                      <h1>`+potions[id].name+`</h1>
+                      <h1>Use/Effect:</h1>
+                      <p>`+potions[id].effect+`</p>
+                      <h1>Ingredients</h1>
+                      <ul>
+                        `+ingredients+`
+                      </ul>
+                      <h1>Price:</h1>
+                      <h1 class="price">$`+potions[id].price+`</h1>
+                      <button>ADD TO CART</button>
+                    </div>`;
+        potion_detailed.innerHTML = html;
+        toggleVisibility(modal);
+        event.preventDefault();
+      });
+    }
+  });
+
+  let modal = document.getElementById('potionModal');
+  let close_button = document.getElementById('close');
+
+  close_button.onclick = function() {
+      toggleVisibility(modal);
+  }
+  window.onclick = function(event) {
+      if (event.target == modal) {
+        toggleVisibility(modal);
+      }
+  }
+
+</script>
+
+</body>
+</html>

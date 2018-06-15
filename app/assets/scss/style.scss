@@ -1,0 +1,486 @@
+/************* 
+* RESET
+**************/
+a {
+  text-decoration: none;
+}
+
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, article, footer, header, nav, section, main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/************* 
+* FONTS
+**************/
+@font-face {
+  font-family: 'Oswald';
+  src: url('../fonts/Oswald/Oswald-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  src: url('../fonts/DroidSans/DroidSans.otf') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('../fonts/Noto_Serif/NotoSerif-Italic.ttf') format('truetype');
+}
+
+/************* 
+* HELPERS
+**************/
+.container{
+  width:70%;
+  margin:0 auto;
+  padding:0 60px;
+}
+
+button{
+  background:#D73A1E;
+  color:#fff;
+  border-radius:5px;
+  padding:10px;
+  border:#D73A1E;
+}
+
+.price{
+  color:#D73B1E;
+}
+
+/************* 
+* MODAL
+**************/
+#potionModal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  .content{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius:10px;
+    width: 80%;
+    i{
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .potion-detailed{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:100%;
+      img{
+        flex: 1 1 auto; 
+        max-width: 50%;
+      }
+      .potion-detail{
+        flex: 1 1 auto; 
+        h1{
+          font-family:'Oswald', Arial, serif;
+        }
+        p{
+          font-family:'Noto Serif';
+        }
+        ul{
+          list-style:none;
+          padding:10px 20px;
+        }
+      }
+    }
+  }
+}
+
+/************* 
+* HEADER
+**************/
+header{
+  height:100px;
+  padding:0 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  .logo{
+    h1{
+      font-family: 'Oswald';
+      color:#D73B1E;
+      font-size:40px;
+
+    }
+    p{
+      font-family: 'Noto Serif', 'Times New Roman', Times, serif;
+      color:#523468;
+      margin:0 10px;
+      &::before,
+      &::after {
+          display: inline-block;
+          content: "";
+          border-top: .2rem solid #B9B9B9;
+          width: 35px;
+      }
+      &::before{
+        transform:translateX(-10px);
+      }
+      &::after{
+        transform:translateX(10px);
+      }
+    }
+  }
+
+  .search-form{
+    border:1px solid #333;
+    border-radius:5px;
+    padding:5px;
+    .search{
+      padding:10px;
+      width:250px;
+      height:100%;
+      border:none;
+    }
+
+    i{
+      font-size:20px;
+      color:#D73B1E;
+    }
+  }
+
+  .promotion{
+    display:flex;
+    padding:20px 0;
+    .info{
+      font-family: 'Noto Serif', serif;
+      color:#D73B1E;
+      h1{
+        font-size:20px;
+      }
+    }
+
+    .bag{
+      i{
+        font-size:20px;
+        color: #523468;
+      }
+      color:#B9B9B9;
+      font-weight:bold;
+      margin:20px;
+      font-family:Arial, serif;
+      .number{
+        color:#D73B1E;
+      }
+    }
+  }
+}
+
+.nav-toggle{
+  display:none;
+  i{
+    color:#523468;
+    font-size:40px;
+  }
+}
+
+.info-mobile{
+  width:100%;
+  background:#ccc;
+  text-align:center;
+  padding:5px 0;
+  font: 20px 'Noto Serif';
+  color: #666;
+  display:none;
+}
+
+.container-fluid{
+  width:100%;
+}
+
+/************* 
+* MENU
+**************/
+.main-bar{
+  background:#523468;
+  margin-bottom:40px;
+  .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#745C86;
+    a{
+      color:#fff;
+    }
+
+    ul{
+      list-style:none;
+      display:initial;
+      li{
+        display:inline-block;
+        padding:20px 0;
+        a{
+          font-family:'Noto Serif', 'Times New Roman', serif;
+          color:#fff;
+          margin:5px;
+          padding:20px 10px;
+          &:hover{
+            background:#745C86;
+          }
+        }
+      }
+
+      .dropbtn::before{
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900; 
+        content: "\f107";
+        margin: 0 5px;
+      }
+
+      .dropdown-content {
+        margin-top:19px;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {background-color: #f1f1f1}
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    }
+
+  }
+}
+
+
+
+/************* 
+* POTIONS
+**************/
+.potions{
+  h1{
+    font-family: 'Noto Serif', serif;
+    color:#D73B1E;
+  }
+
+  .list-potions{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    .potion{
+      cursor:pointer;
+      max-width:300px;
+      margin:40px;
+      img{
+        max-width:300px;
+      }
+
+      h1{
+        font-family:'Oswald', 'Times New Roman';
+        color:#333;
+        text-align:center;
+      }
+    }
+  }
+}
+
+/************* 
+* FOOTER
+**************/
+footer{
+  background:#B9B9B9;
+  padding:30px 0;
+
+  .container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+  }
+
+  .footer-nav{
+    ul{
+      list-style:none;
+      li{
+        display:inline-block;
+        margin: 0 5px;
+        a{
+          font-family:Arial, 'Times New Roman', serif;
+          color:#D73B1E;
+
+          &:hover{
+            opacity:0.8;
+          }
+        }
+      }    
+    }
+  }
+
+  .copy{
+    width:70%;
+    margin:0 auto;
+    color:#666666;
+    font-family:Arial, 'Times New Roman', serif;
+  }
+
+  .social-media{
+    margin:40px 5px;
+    i{
+      margin:0 20px;
+      font-size:30px;
+      color:#523269;
+      cursor:pointer;
+      &:hover{
+        opacity:0.8;
+      }
+    }
+  }
+
+  .newsletter{
+    margin: 0 20px;
+    background:#fff;
+    border-radius:10px;
+    padding:30px;
+    font-family: Arial, 'Noto Serif', serif;
+
+    h1{
+      font-family:'Noto Serif', serif;
+      color:#333;
+      font-size:20px;
+      margin-bottom:10px;
+    }
+
+    input{
+      border:1px solid #333;
+      border-radius:5px;
+      padding:10px;
+      margin:10px 0;
+      width:70%;
+    }
+  }
+}
+
+/*******************
+* Responsive fixes
+********************/
+@media only screen and (max-width: 768px) {
+  #potionModal .content .potion-detailed {
+      flex-direction: column;
+  }
+  .container{
+    width:100%;
+    padding:0;
+    margin:10px 0;
+  }
+  .main-bar{
+    display:none;
+  }
+  .promotion > .info{
+    display:none;
+  }
+  .search-form{
+    display:none;
+  }
+  .info-mobile{
+    display:inherit;
+  }
+
+  header{
+    i{
+      margin-left:10px;
+    }
+    .nav-toggle{
+      display:initial;
+    }
+
+    .logo {
+      font-size:10px;
+      h1{
+        font-size:20px;
+      }
+    }
+    p::before,p::after {
+      width: 5px !important;
+    }
+
+  }
+  .main-bar{
+    .container{
+      ul {
+        list-style: none;
+        display: block;
+        flex-shrink: 0;
+        flex-grow: 1;
+        width: 100%;
+      }
+      display: flex;
+      justify-content: space-between;
+      flex-flow: column;
+      color: #745C86;
+      position: absolute;
+      top: 100px;
+      right: 0;
+      background: #523468;
+      left: 0;
+      span{
+        padding:20px 0;
+      }
+    }
+    ul li{
+      display:inherit !important;
+      width:100%;
+      border-bottom:2px solid #745C86;
+    }
+  }
+  .main-bar .container ul .dropdown-content {
+    position: relative;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: none;
+  }
+  .potions h1{
+    margin-left: 10px;
+  }
+  .list-potions{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    .potion{
+      margin:20px 0 !important; 
+      max-width:100% !important;
+      img{
+        max-width:100% !important;
+      }
+      h1{
+        margin:0;
+      }
+    }
+  }
+
+  .copy{
+    width:100%;
+    padding-top:20px;
+  }
+}
+
