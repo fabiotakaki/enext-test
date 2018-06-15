@@ -224,6 +224,16 @@ header{
     ul{
       list-style:none;
       display:initial;
+
+      .featured{
+        background:#422A53;
+        border-radius:5px;
+        padding:15px 0;
+        a:hover{
+          background:none;
+        }
+      }
+
       li{
         display:inline-block;
         padding:20px 0;

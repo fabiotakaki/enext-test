@@ -177,6 +177,12 @@ header {
     .main-bar .container ul {
       list-style: none;
       display: initial; }
+      .main-bar .container ul .featured {
+        background: #422A53;
+        border-radius: 5px;
+        padding: 15px 0; }
+        .main-bar .container ul .featured a:hover {
+          background: none; }
       .main-bar .container ul li {
         display: inline-block;
         padding: 20px 0; }
